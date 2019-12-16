@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!--METADATA-->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description"
+    content="Syntax is your online specialized bookstore for programming languages to learn web and app design or development through books.">
+  <meta name="keywords"
+    content="Syntax bookstore, programming languages books, online programming bookstore, web design books, web development books, app books">
+  <meta name="author" content="C/CID">
+  <!-- leaflet map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" crossorigin=""></script>
+  <!--link font Orbitron and Raleway-->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:400,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <!--link icons Font Awesome-->
+  <script src="https://kit.fontawesome.com/cf52462e7e.js" crossorigin="anonymous"></script>
+  <!--link bootstrap -->
+  <link href="files/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--link custom css-->
+  <link rel="stylesheet" href="css/style.css">
+  <!--title and favicon-->
+  <title>Syntax | Web Dev Bookstore</title>
+  <link rel="icon" type="png" sizes="16x16" href="resources/images/favicon-syntax-16x16.png">
+
+
+</head>
+
+<body id="page-top">
+
+  <!-- SEARCH NAV -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="d-flex flex-grow-1">
+      <a class="navbar-brand" href="#page-top">
+        <img src="resources/images/logo-syntax-transparent.png" width="40" height="40" class="d-inline-block align-top"
+          alt="Logo Syntax">
+      </a>
+      <form class="mr-2 my-auto w-100 d-inline-block order-1">
+        <div class="input-group">
+          <input id="inputSearch" type="text" class="form-control border border-right-0" placeholder="Find your book!">
+          <span class="input-group-append">
+            <button id="buttonSearch" class="btn btn-outline-warning border-warning border-left-0" type="button">
+              Search
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </form>
+      <div class="navbar-collapse collapse flex-shrink-1 flex-grow-0 order-last" id="navbar7">
+        <ul class="navbar-nav text-white">
+          <li class="nav-item">
+            <button type="button" class="nav-link bg-dark border-dark" data-toggle="modal"
+              data-target="#exampleModalCenter">
+              <i class="fas fa-user-circle"></i>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link bg-dark border-dark" disabled>
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MODAL LOGIN -->
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-dark">
+          <h5 class="modal-title text-warning text-center" id="exampleModalLongTitle">LOG IN! <i
+              class="fas fa-user-circle text-white"></i></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="text-warning">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-warning text-white">
+          <!-- Form -->
+          <form class="p-4 needs-validation" novalidate="" action="/echo" method="POST">
+            <!-- Email -->
+            <label for="inputSuccess6">E-mail</label>
+            <input type="email" name="i6" id="inputSuccess6" class="form-control mb-4" placeholder="Enter your e-mail"
+              aria-describedby="inputGroupPrepend" required>
+            <div class="valid-feedback">Correct!</div>
+            <div class="invalid-feedback">Please fill the field.</div>
+            <!-- Password -->
+            <label for="inputSuccess7">Password</label>
+            <input type="password" name="i7" id="inputSuccess7" class="form-control mb-4"
+              placeholder="Enter your password" aria-describedby="inputGroupPrepend" required>
+            <div class="valid-feedback">Correct!</div>
+            <div class="invalid-feedback">Please fill the field.</div>
+            <div class="container">
+              <button type="submit" class="btn btn-dark my-4 btn-block" id="btnSubmit">Access</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer bg-light">
+          <p class="pt-3">Not a member?
+            <a href="#register" class="text-warning">Register</a>
+          </p>
+          <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+
+  <header class="bg-light">
+    <div class="container text-center">
+      <div class="logoBox">
+        <a href="#page-top">
+          <img class="logoImage" src="resources/images/logo-syntax-transparent.png" alt="Logo Syntax" height="50"
+            width="50">
+        </a>
+        <div class="logoLettersBox">
+          <h1 class="logoTitle">SYNTAX</h1>
+          <h2 class="logoSubtitle">Web Dev Bookstore 📖</h2>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU NAV -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-center">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#offers">Offers</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- JUMBOTRON -->
+
+  <article>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="jumbotron bg-cover text-white text-center my-auto w-100">
+          <h1 class="display-4 text-warning">PAPER IS NOT DEAD!</h1>
+          <p class="lead">Syntax is your online specialized bookstore for programming languages<br />to learn web or app
+            development and design through books.</p>
+          <hr class="my-4">
+          <p>Do you want to level up your skills with our awesome collection of books and offers? Don't think twice:</p>
+          <a class="btn btn-warning btn-lg" href="#register" role="button">Register!</a>
+        </div>
+        <div class="darkLine"></div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- PRESENTATION -->
+
+  <article>
+
+    <!-- Categories -->
+    <div class="container pt-3 pb-3">
+      <div class="row">
+        <div class="col-lg-3">
+          <h3 class="my-4 text-warning">Categories</h3>
+          <div class="list-group">
+            <a href="#popular" class="list-group-item text-warning">Popular</a>
+            <a href="#new" class="list-group-item text-warning">New</a>
+            <a href="#top" class="list-group-item text-warning">Top</a>
+          </div>
+        </div>
+
+        <!-- Carousel -->
+        <div class="col-lg-9">
+          <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <img class="d-block img-fluid" src="resources/images/front-end-books.png" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src="resources/images/back-end-books.png" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src="resources/images/design-and-other-books.png" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <div class="darkLine"></div>
+
+  <!-- CARDS -->
+
+  <article class="bg-store pb-5">
+
+    <!--Popular Books-->
+    <section id="popular">
+
+      <div class="container">
+        <h3 class="text-warning pb-5 pt-5">Popular books right now</h3>
+
+        <div class="card-deck d-flex justify-content-around">
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/the-joy-of-php.jpg"
+                alt="Book: The Joy of PHP"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">BACK-END</a>
+              </h4>
+              <h5>$17.68</h5>
+              <p class="card-text">The Joy of PHP.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/javascript-and-jquery.jpg"
+                alt="Book: JavaScript and JQuery"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">FRONT-END</a>
+              </h4>
+              <h5>$23.38</h5>
+              <p class="card-text">JavaScript & JQuery.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/learn-python-the-hard-way.jpg"
+                alt="Book: Learning Python the hard way"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">BACK-END</a>
+              </h4>
+              <h5>$28.05</h5>
+              <p class="card-text">Learn Python the Hard Way.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/dont-make-me-think.jpg"
+                alt="Book: Don't make me think"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">DESIGN/OTHER</a>
+              </h4>
+              <h5>$19,99</h5>
+              <p class="card-text">Don't Make Me Think!
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- New Books -->
+    <section id="new">
+
+      <div class="container">
+        <h3 class="text-warning pb-5 pt-5">New and ready to read</h3>
+
+        <div class="card-deck d-flex justify-content-around">
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/the-clean-coder.jpg"
+                alt="Book: The Clean Coder"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">DESIGN/OTHER</a>
+              </h4>
+              <h5>$34,09</h5>
+              <p class="card-text">The Clean Coder.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/html-beginners-guide.jpg"
+                alt="Book: HTML Beginners Guide"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">FRONT-END</a>
+              </h4>
+              <h5>$28.99</h5>
+              <p class="card-text">HTML Quick Start Guide.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/javascript-the-good-parts.jpg"
+                alt="Book: JavaScript The Good Parts"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">FRONT-END</a>
+              </h4>
+              <h5>$33.05</h5>
+              <p class="card-text">JavaScript: The Good Parts.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/Learning-Web-Design.jpg"
+                alt="Book: Learning Web Design"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">DESIGN/OTHER</a>
+              </h4>
+              <h5>$26.05</h5>
+              <p class="card-text">Learning Web Design.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Top Books -->
+    <section id="top">
+
+      <div class="container">
+        <h3 class="text-warning pb-5 pt-5">Top best-sellers for you</h3>
+
+        <div class="card-deck d-flex justify-content-around">
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/front-end-web-development-ranch-guide.jpg"
+                alt="Book: Front-End Web Development Ranch Guide"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">FRONT-END</a>
+              </h4>
+              <h5>$20.05</h5>
+              <p class="card-text">Web Development: The Big Nerd Ranch Guide.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/c-programming-language.jpg"
+                alt="Book: C Programming Languague"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">BACK-END</a>
+              </h4>
+              <h5>$32,99</h5>
+              <p class="card-text">The C++ Programming Language.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/java-complete-reference.jpg"
+                alt="Book: Java Complete Reference"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">BACK-END</a>
+              </h4>
+              <h5>$18.37</h5>
+              <p class="card-text">Java: The Complete Reference.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
+            </div>
+          </div>
+
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="resources/books/php-and-mysql-missing-manual.jpg"
+                alt="Book: PHP and MYSQL Missing Manual"></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#" class="text-warning">BACK-END</a>
+              </h4>
+              <h5>$22.95</h5>
+              <p class="card-text">PHP & MySQL The Missing Manual.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </article>
+
+  <!-- SECTIONS -->
+
+  <div class="darkLine"></div>
+
+  <!-- Section About -->
+  <section id="about">
+    <div class="container-fluid p-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="text-warning pb-3">About our bookstore!</h2>
+          <p class="lead pb-3">Syntax is an online bookstore with a theme focused on programming,<br> for all those
+            people who want to start or expand their knowledge in front-end, back-end or web design and prefer to take
+            off the screen a little while they continue to grow in any of these areas of web development.<br><br>
+            <em>We are a team committed to offering the best material on this interesting world through
+              paper!</em><br><br>
+            Our products are chosen according to the market trend, with the highest quality seal and carefully
+            packaged,<br> because there is nothing better than receiving a well-kept book.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services cards -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card text-white bg-dark">
+            <div class="card-body">
+              <img class="card-custom-img" src="resources/images/fast-delivery.png" alt="Fast Delivery">
+              <h5 class="card-title text-warning pt-3">Fast delivery!</h5>
+              <p class="card-text">If you place an order, your purchase will only take two days until it reaches you
+                in the country where you live with free shipping.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card text-white bg-dark">
+            <div class="card-body">
+              <img class="card-custom-img" src="resources/images/refund-allowed.png" alt="Refund Allowed">
+              <h5 class="card-title text-warning pt-3">Refund allowed!</h5>
+              <p class="card-text">Also if you have any problem with any of your purchases and want to return a book, we
+                will refund the specific amount of it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Contact -->
+  <section id="contact" class="bg-warning text-white">
+    <div class="container-fluid p-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="text-dark pb-3">Contact us:</h2>
+          <p class="lead">You can contact us to help you solve any problem with our customer service. We will answer
+            your questions and guide you if you need a guide regarding any of the products so that you have as
+            much information as possible.<br><br>
+            Remember that you can also sign up in Syntax for limited benefits and offers!<br><br>
+            <em>Contact phone number:<br>XXX XXX XXX.</em><br>
+          </p>
+          <hr class="my-4">
+          <p>Although we ship to any country, our bookstore is currently present in the following places:</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leaflet Map -->
+    <div id="map"></div>
+  </section>
+
+  <!-- Section Offers -->
+  <section id="offers">
+    <div class="container-fluid p-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center text">
+          <h2 class="text-warning pb-3">Last minute offers!</h2>
+          <p class="lead pb-3">These are the featured books by our team, so take advantage of our discounts.<br><br>
+            <em>The offer is valid until we renew the recommendations. Be quick!</em>
+          </p>
+
+          <!-- Offers Cards-->
+          <div class="container">
+            <div class="card-deck d-flex justify-content-around">
+
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="resources/books/beginning-node-js.jpg"
+                    alt="Book: Beginning Node JS"></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#" class="text-warning">Node.js</a>
+                  </h4>
+                  <span class="badge badge-pill badge-warning mb-2">Discount!</span>
+                  <h5><s class="text-warning">$46,01</s> $22,99</h5>
+                  <p class="card-text">Step-by-step guide to create maintainable Node.js applications.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="resources/books/css-secrets.jpg" alt="Book: CSS Secrets"></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#" class="text-warning">CSS</a>
+                  </h4>
+                  <span class="badge badge-pill badge-warning mb-2">Discount!</span>
+                  <h5><s class="text-warning">$36,83</s> $18,05</h5>
+                  <p class="card-text">Learn all about CSS for web design and become an expert in that field.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+                </div>
+              </div>
+
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="resources/books/the-ux-team-of-one.jpg"
+                    alt="Book: The UX team of one"></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#" class="text-warning">UX Design</a>
+                  </h4>
+                  <span class="badge badge-pill badge-warning mb-2">Discount!</span>
+                  <h5><s class="text-warning">$31,82</s> $16,28</h5>
+                  <p class="card-text">A deep research that can help you design better experiences for the user.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top"
+                    src="resources/books/learning-web-development-with-boostrap-and-angularjs.jpg"
+                    alt="Book: Learning web development with Bootstrap and AngularJS"></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#" class="text-warning">Bootstrap</a>
+                  </h4>
+                  <span class="badge badge-pill badge-warning mb-2">Discount!</span>
+                  <h5><s class="text-warning">$43,66</s> $25,08</h5>
+                  <p class="card-text">Build, develop and customize your sites using Bootstrap with Angular.js.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="darkLine"></div>
+
+  <!-- REGISTER -->
+
+  <section id="register" class="bg-random text-white p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 class="text-warning">Create an account for free:</h2>
+          <p class="lead">Join our community by filling out this simple form.</p>
+
+          <!-- Form -->
+          <form class="text-center bg-warning border border-light p-5 needs-validation" novalidate="" action="/echo"
+            method="POST" oninput="i4.setCustomValidity(i4.value !=i3.value ? 'Passwords do not match.' : '')">
+            <p class="font-weight-bold h4 mb-4">REGISTER</p>
+            <div class="form-row mb-4">
+              <div class="col">
+                <!-- Name account -->
+                <label for="inputSuccess1">Name account</label>
+                <input type="text" class="form-control" placeholder="Enter your name account" name="i1"
+                  id="inputSuccess1" required>
+                <div class="valid-feedback">Correct!</div>
+                <div class="invalid-feedback">Please, fill the field.</div>
+              </div>
+              <div class="col">
+                <!-- E-mail -->
+                <label for="inputSuccess2">E-mail</label>
+                <input type="email" class="form-control" placeholder="Enter your e-mail" name="i2" required
+                  id="inputSuccess2">
+                <div class="valid-feedback">Correct!</div>
+                <div class="invalid-feedback">Please fill the field.</div>
+              </div>
+            </div>
+            <!-- Create Password -->
+            <div class="form-row mb-4">
+              <div class="col">
+                <label for="inputSuccess3">Create password</label>
+                <input type="password" name="i3" required id="inputSuccess3" class="form-control"
+                  placeholder="Enter your password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                <div class="valid-feedback">Correct!</div>
+                <div class="invalid-feedback">Please fill the field.</div>
+                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4 text-center">
+                  Enter a password.
+                </small>
+              </div>
+              <!-- Repeat Password -->
+              <div class="col">
+                <label for="inputSuccess4">Repeat password</label>
+                <input type="password" name="i4" required id="inputSuccess4" class="form-control"
+                  placeholder="Repeat your password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                <div class="valid-feedback">Correct!</div>
+                <div class="invalid-feedback">Please fill the field.</div>
+                <small id="defaultRegisterFormRepeatPasswordHelpBlock" class="form-text text-muted mb-4 text-center">
+                  Confirm the password.
+                </small>
+              </div>
+            </div>
+            <!-- Dropwdown Continent -->
+            <div class="form-group">
+              <label for="inputState">Continent</label>
+              <select id="inputSuccess8" class="mdb-select form-control" required>
+                <option selected disabled value="0">Choose:</option>
+                <option value="1">North America</option>
+                <option value="2">South America</option>
+                <option value="3">Europe</option>
+                <option value="4">Asia</option>
+                <option value="5">Africa</option>
+                <option value="6">Australia</option>
+              </select>
+              <div class="valid-feedback">Correct!</div>
+              <div class="invalid-feedback">Please fill the field.</div>
+            </div>
+            <button type="submit" class="btn btn-dark my-4 btn-block">Submit</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="py-5 bg-dark">
+    <div class="container text-center text-white">
+      <p class="m-0 pb-3">Copyright &copy; SYNTAX 2019</p>
+      <a href="https://twitter.com/" class="mx-2" role="button"><i class="fab fa-twitter text-white"></i></a>
+      <a href="https://www.linkedin.com/" class="mx-2" role="button"><i class="fab fa-linkedin-in text-white"></i></a>
+      <a href="https://github.com" class="mx-2" role="button"><i class="fab fa-github text-white"></i></a>
+    </div>
+  </footer>
+
+  <!-- BOOTSTRAP CORE JS -->
+
+  <script src="files/jquery/jquery.min.js"></script>
+  <script src="files/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- BOOTSTRAP SCRIPTS -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- JS MAIN SCRIPT -->
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
