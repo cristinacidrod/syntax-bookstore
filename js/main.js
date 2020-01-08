@@ -19,11 +19,13 @@ function validateSearch() {
 
 (function () {
     'use strict';
-    window.addEventListener('load', function () {
+    window.addEventListener("load", function () {
         // Get the inputs and values
-        let forms = document.getElementsByClassName('needs-validation');
+        let forms = document.getElementsByClassName("needs-validation");
         let emailForm = document.getElementById("inputSuccess2").value;
         let emailModal = document.getElementById("inputSuccess6").value;
+        let passwordModal = document.getElementById("inputSuccess7").value;
+        let dropdownSelect = document.getElementsByTagName("select");
         // Prevent submission if empty
         Array.prototype.filter.call(forms, function (form) {
             form.addEventListener('submit', function (event) {
@@ -34,8 +36,13 @@ function validateSearch() {
                 } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/.test(emailForm, emailModal)) {
                     event.preventDefault();
                     event.stopPropagation();
-                } // Repeat password validation for form is done in html index
-                form.classList.add('was-validated');
+                    // Dropdown validation
+                } else if (dropdownSelect.value == "") {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                // Repeat password validation for form is done in html index
+                form.classList.add("was-validated");
             }, false);
         });
     }, false);
@@ -44,7 +51,7 @@ function validateSearch() {
 
 // LEAFLET MAP
 
-let leafletMap = L.map('map').setView([48.081375, -22.200988], 3);
+let leafletMap = L.map("map").setView([48.081375, -22.200988], 3);
 // Create custom logo icons
 let LeafIcon = L.Icon.extend({
     options: { iconSize: [40, 40] }
