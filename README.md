@@ -11,7 +11,6 @@ Link: https://cristinacidrod.github.io/syntax-bookstore/
 ### Built with:
 
 * HTML
-* SASS
 * CSS
 * JavaScript
 * Bootstrap
