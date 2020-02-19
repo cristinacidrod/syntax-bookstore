@@ -13,6 +13,7 @@ Link: https://cristinacidrod.github.io/syntax-bookstore/
 * HTML
 * CSS
 * JavaScript
+* Leaflet
 * Bootstrap
 
 ---
